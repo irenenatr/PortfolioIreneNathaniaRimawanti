@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Irene Nathania Rimawanti - Portfolio</title>
+  
+  <!-- Favicon Logo di Tab Browser menggunakan irenelogo.png -->
+  <link rel="icon" type="image/png" href="irenelogo.png">
+
+  <!-- Import Font Poppins dari Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Reset & Font Global */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: #00BF63; /* Latar luar hijau */
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Navbar Atas (Awalnya tersembunyi, muncul saat scroll) */
+    .navbar {
+      position: fixed;
+      top: -100px;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background-color: #FFDE59;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 5%;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      z-index: 1000;
+      transition: top 0.4s ease-in-out;
+    }
+
+    .navbar.visible {
+      top: 0;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 45px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #000000;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 18px;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #FF5757;
+    }
+
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: #000000;
+      border-radius: 2px;
+    }
+
+    .nav-links a.active::after {
+      background-color: #000000;
+    }
+
+    .nav-links a:hover::after {
+      background-color: #FF5757;
+    }
+
+    /* Section Home / Hero */
+    .hero-section {
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .hero-container {
+      position: relative;
+      width: 100%;
+      max-width: 1740px;
+      aspect-ratio: 16 / 9;
+      background-color: #3C59E4;
+      border-radius: clamp(24px, 4vw, 60px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .name-badge {
+      position: absolute;
+      top: 8%;
+      left: 6%;
+      background-color: #FF5757;
+      border: clamp(6px, 0.9vw, 12px) solid #FFFFFF;
+      border-radius: 9999px;
+      padding: clamp(12px, 2vw, 28px) clamp(20px, 3.5vw, 48px);
+      transform: rotate(-14deg);
+      box-shadow: 6px 10px 0px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .name-badge:hover {
+      transform: rotate(-10deg) scale(1.05);
+    }
+
+    .name-badge span {
+      color: #FFFFFF;
+      font-size: clamp(14px, 2.5vw, 42px);
+      font-weight: 800;
+      line-height: 1.1;
+      display: block;
+      text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+    }
+
+    .title-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .portfolio-title {
+      color: #EDA63A;
+      font-size: clamp(75px, 17.5vw, 310px);
+      font-weight: 900;
+      line-height: 0.82;
+      letter-spacing: 2px;
+      text-align: center;
+      transform: rotate(-3deg);
+      -webkit-text-stroke: clamp(8px, 1.5vw, 26px) #FFFFFF;
+      paint-order: stroke fill;
+      filter: drop-shadow(0px 12px 0px rgba(0, 0, 0, 0.12));
+    }
+
+    .year-text {
+      position: absolute;
+      bottom: -10%;
+      right: 10%;
+      color: #FFFFFF;
+      font-size: clamp(16px, 3vw, 55px);
+      font-weight: 800;
+      letter-spacing: 1px;
+      transform: rotate(-3deg);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+      z-index: 5;
+    }
+
+    .content-section {
+      width: 100%;
+      max-width: 1740px;
+      padding: 80px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .bio-card {
+      background-color: #FF5757;
+      border: 12px solid #FFFFFF;
+      border-radius: 40px;
+      padding: 50px 60px;
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      width: 100%;
+    }
+
+    .bio-img-box {
+      flex-shrink: 0;
+      width: 250px;
+      height: 360px;
+      background: #FFDE59;
+      border: 8px solid #FFFFFF;
+      border-radius: 28px;
+      overflow: hidden;
+      transform: rotate(-4deg);
+      box-shadow: 6px 8px 0px rgba(0,0,0,0.12);
+    }
+
+    .bio-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .bio-content-area {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .bio-text h2 {
+      color: #FFFFFF;
+      font-size: 56px;
+      font-weight: 900;
+      margin-bottom: 20px;
+      text-shadow: 2px 3px 0px rgba(0,0,0,0.1);
+    }
+
+    .bio-text p {
+      color: #FFFFFF;
+      font-size: 18px;
+      line-height: 1.7;
+      font-weight: 600;
+      max-width: 1100px;
+      margin-bottom: 16px;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      background: #FFFFFF;
+      color: #3C59E4;
+      padding: 10px 22px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 800;
+      font-size: 15px;
+      text-decoration: none;
+      box-shadow: 3px 5px 0px rgba(0,0,0,0.12);
+      transition: transform 0.2s, background-color 0.2s, color 0.2s;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px) scale(1.03);
+      background-color: #FFDE59;
+      color: #3C59E4;
+    }
+
+    .social-links a.cv-btn {
+      background-color: #FFDE59;
+      color: #D32F2F;
+    }
+
+    .social-links a.cv-btn span {
+      background-color: #D32F2F;
+      color: #FFFFFF;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .about-bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 40px;
+    }
+
+    .left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .stamp-card {
+      background-color: #FFB74D;
+      border: 8px dashed #FFFFFF;
+      border-radius: 28px;
+      padding: 35px;
+      position: relative;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .stamp-title {
+      position: absolute;
+      top: -22px;
+      left: 35px;
+      background-color: #FFDE59;
+      color: #3C59E4;
+      padding: 6px 22px;
+      border: 4px solid #FFFFFF;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 22px;
+      transform: rotate(-3deg);
+      box-shadow: 3px 4px 0px rgba(0,0,0,0.1);
+    }
+
+    .content-box-white {
+      margin-top: 15px;
+      background: #FFFFFF;
+      padding: 22px;
+      border-radius: 18px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .edu-year {
+      background-color: #3C59E4;
+      color: #FFFFFF;
+      padding: 4px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+
+    .content-box-white h3 {
+      color: #3C59E4;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .content-box-white p {
+      color: #555;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .skill-category {
+      margin-bottom: 16px;
+    }
+
+    .skill-category h4 {
+      color: #3C59E4;
+      font-size: 15px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      border-bottom: 2px solid #EAEAEA;
+      padding-bottom: 4px;
+    }
+
+    .skill-category ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .skill-category li {
+      color: #444;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .experience-card {
+      background-color: #D32F2F;
+      border: 8px solid #FFFFFF;
+      border-radius: 28px;
+      padding: 35px;
+      position: relative;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .experience-title {
+      position: absolute;
+      top: -22px;
+      right: 35px;
+      background-color: #FFDE59;
+      color: #3C59E4;
+      padding: 6px 22px;
+      border: 4px solid #FFFFFF;
+      border-radius: 14px;
+      font-weight: 900;
+      font-size: 22px;
+      transform: rotate(3deg);
+      box-shadow: 3px 4px 0px rgba(0,0,0,0.1);
+    }
+
+    .exp-list {
+      margin-top: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .exp-item {
+      background: #FFFFFF;
+      padding: 16px 20px;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    .exp-date {
+      background-color: #3C59E4;
+      color: #FFFFFF;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .exp-desc {
+      text-align: right;
+    }
+
+    .exp-desc h4 {
+      color: #D32F2F;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .exp-desc p {
+      color: #555;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* Projects Section */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 35px;
+      width: 100%;
+    }
+
+    .project-card {
+      background-color: #3C59E4;
+      border: 8px solid #FFFFFF;
+      border-radius: 28px;
+      padding: 35px 30px 30px 30px;
+      position: relative;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-tag {
+      position: absolute;
+      top: -20px;
+      left: 30px;
+      background-color: #FFDE59;
+      color: #D32F2F;
+      padding: 5px 18px;
+      border: 4px solid #FFFFFF;
+      border-radius: 12px;
+      font-weight: 900;
+      font-size: 15px;
+      transform: rotate(-2deg);
+      box-shadow: 2px 3px 0px rgba(0,0,0,0.1);
+    }
+
+    .project-content {
+      margin-top: 15px;
+      background: #FFFFFF;
+      padding: 24px;
+      border-radius: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .project-content h3 {
+      color: #3C59E4;
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: #444;
+      font-size: 14px;
+      line-height: 1.6;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tech-pill {
+      background-color: #FFE082;
+      color: #3C59E4;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 8px;
+    }
+
+    /* Tombol Aksi di Kartu Proyek */
+    .project-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .project-link {
+      flex: 1;
+      display: inline-block;
+      background-color: #FF5757;
+      color: #FFFFFF;
+      text-align: center;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 13px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(255,87,87,0.3);
+      transition: background-color 0.2s, transform 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .project-link:hover {
+      background-color: #D32F2F;
+      transform: scale(1.02);
+    }
+
+    .project-link.secondary {
+      background-color: #3C59E4;
+    }
+
+    .project-link.secondary:hover {
+      background-color: #283cb8;
+    }
+
+    /* Styling Modal untuk Menampilkan Gambar Popup */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-image-container {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-image-container img {
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 20px;
+      border: 8px solid #FFFFFF;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+      object-fit: contain;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background-color: #FF5757;
+      color: #FFFFFF;
+      border: 4px solid #FFFFFF;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      z-index: 10;
+      transition: transform 0.2s;
+    }
+
+    .modal-close-btn:hover {
+      transform: scale(1.1);
+      background-color: #D32F2F;
+    }
+
+    /* RESPONSIVE CSS KHUSUS MOBILE UNTUK BAGIAN ABOUT */
+    @media (max-width: 900px) {
+      .bio-card {
+        flex-direction: column; /* Mengubah susunan menjadi ke bawah (kolom) pada layar mobile */
+        align-items: center;
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .bio-img-box {
+        margin-bottom: 10px; /* Foto berada di bagian paling awal sebelum paragraf teks */
+      }
+
+      .bio-text p {
+        max-width: 100%;
+      }
+
+      .social-links {
+        justify-content: center;
+      }
+
+      .about-bottom-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Atas -->
+  <nav class="navbar" id="navbar">
+    <a href="#home" class="nav-logo">
+      <img src="irenelogo.png" alt="Irene Logo">
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+    </ul>
+  </nav>
+
+  <!-- Section Home -->
+  <section class="hero-section" id="home">
+    <div class="hero-container">
+      <div class="name-badge">
+        <span>Irene<br>Nathania<br>Rimawanti</span>
+      </div>
+
+      <div class="title-wrapper">
+        <h1 class="portfolio-title">PORT<br>FOLIO</h1>
+        <div class="year-text">2022-2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section About Me -->
+  <section class="content-section" id="about">
+    <div class="bio-card">
+      <!-- Foto Profil (di mobile akan otomatis berada di bagian awal/atas) -->
+      <div class="bio-img-box">
+        <img src="irene porto.png" alt="Irene Porto">
+      </div>
+      <div class="bio-content-area">
+        <div class="bio-text">
+          <h2>HI!</h2>
+          <p>
+            I am a Computer Science student at Bina Nusantara University with a deep passion for Software Engineering. I bridge the gap between complex technical logic and intuitive user experiences, a skill demonstrated through my work in system design and responsive frontend web and mobile development.
+          </p>
+          <p>
+            Driven by high self-discipline, structured analytical thinking, and a meticulous eye for detail, I approach system development not just as a coder, but as a solution architect who values both technical scalability and real-world user satisfaction.
+          </p>
+        </div>
+        <div class="social-links">
+          <a href="www.linkedin.com/in/irene-nathania-rimawanti-326958325/" target="_blank">
+            <span>in</span> LinkedIn
+          </a>
+          <a href="mailto:irenenathaniarim@gmail.com">
+            <span>@</span> Email
+          </a>
+          <a href="https://instagram.com/irenenatr" target="_blank">
+            <span>ig</span> Instagram
+          </a>
+          <a href="https://bit.ly/CVIreneNathaniaRimawanti" target="_blank" class="cv-btn">
+            <span>cv</span> View CV
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-bottom-grid">
+      <div class="left-column">
+        <div class="stamp-card">
+          <div class="stamp-title">Education</div>
+          <div class="content-box-white">
+            <span class="edu-year">2024 - present</span>
+            <h3>Bina Nusantara University</h3>
+            <p>Computer Science | Software Engineering</p>
+          </div>
+        </div>
+
+        <div class="stamp-card" style="background-color: #FFB74D;">
+          <div class="stamp-title" style="transform: rotate(2deg);">Skill</div>
+          <div class="content-box-white">
+            <div class="skill-category">
+              <h4>LANGUAGES</h4>
+              <ul>
+                <li>Indonesian (Native)</li>
+                <li>English (Advanced)</li>
+                <li>Korean (Basic)</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h4>PROGRAMMING LANGUAGES</h4>
+              <ul>
+                <li>JavaScript (Advanced)</li>
+                <li>Flutter/Dart (Intermediate)</li>
+                <li>Python (Intermediate)</li>
+                <li>HTML5 & CSS3 (Intermediate)</li>
+                <li>C (Intermediate)</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h4>SOFTWARE</h4>
+              <ul>
+                <li>Figma (Advanced)</li>
+                <li>Visual Studio Code (Advanced)</li>
+                <li>Canva (Advanced)</li>
+                <li>CapCut (Intermediate)</li>
+                <li>Adobe Photoshop (Intermediate)</li>
+              </ul>
+            </div>
+            <div class="skill-category">
+              <h4>SOFT SKILLS</h4>
+              <ul>
+                <li>Public Speaking</li>
+                <li>Cross-Functional Collaboration</li>
+                <li>Budgeting & Resource Management</li>
+                <li>Team Leadership</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-column">
+        <div class="experience-card">
+          <div class="experience-title">Experience</div>
+          <div class="exp-list">
+            <div class="exp-item">
+              <span class="exp-date">2026 - present</span>
+              <div class="exp-desc">
+                <h4>Samsung Innovation Campus</h4>
+                <p>Stage 1 - Python</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2026 - present</span>
+              <div class="exp-desc">
+                <h4>Finance Manager</h4>
+                <p>BVoice Radio</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2026 - present</span>
+              <div class="exp-desc">
+                <h4>Radio Producer</h4>
+                <p>BVoice Radio</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2025 - present</span>
+              <div class="exp-desc">
+                <h4>On-Air Announcer</h4>
+                <p>BVoice Radio</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2025 - 2026</span>
+              <div class="exp-desc">
+                <h4>Event Treasurer</h4>
+                <p>BVoice Radio</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2025</span>
+              <div class="exp-desc">
+                <h4>Electone Stagea Grade 6 Certification</h4>
+                <p>Yamaha Music Foundation</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2024</span>
+              <div class="exp-desc">
+                <h4>Certificate of Competency - Deep Learning</h4>
+                <p>NVIDIA</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2024</span>
+              <div class="exp-desc">
+                <h4>Bosconian Award</h4>
+                <p>SMA Don Bosco II</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2023 - 2024</span>
+              <div class="exp-desc">
+                <h4>Master of Ceremonies</h4>
+                <p>SMA Don Bosco II</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2022 - 2023</span>
+              <div class="exp-desc">
+                <h4>Treasurer in Student Council</h4>
+                <p>SMA Don Bosco II</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2022 - 2023</span>
+              <div class="exp-desc">
+                <h4>Event Treasurer - Arcofest</h4>
+                <p>SMA Don Bosco II</p>
+              </div>
+            </div>
+            <div class="exp-item">
+              <span class="exp-date">2022</span>
+              <div class="exp-desc">
+                <h4>Web Development Committee - Arcofest</h4>
+                <p>SMA Don Bosco II</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Projects -->
+  <section class="content-section" id="projects">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <h2 style="color: #FFFFFF; font-size: 48px; font-weight: 900; text-shadow: 2px 3px 0px rgba(0,0,0,0.1);">FEATURED PROJECTS</h2>
+      <p style="color: #FFFFFF; font-size: 16px; font-weight: 600;">A collection of system designs, web applications, and mobile projects from my portfolio.</p>
+    </div>
+
+    <div class="projects-grid">
+      
+      <!-- Project 1: Sapa Isyarat -->
+      <div class="project-card">
+        <div class="project-tag">Frontend Developer</div>
+        <div class="project-content">
+          <div>
+            <h3>Sapa Isyarat</h3>
+            <p>An all-in-one mobile application designed to help deaf and hard-of-hearing people communicate easily using AI sign-language translation and SIBI framework.</p>
+            <div class="tech-stack">
+              <span class="tech-pill">React</span>
+              <span class="tech-pill">Node.js</span>
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">Docker</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <button class="project-link open-modal-btn" data-img="sapaisyarat.png">View Details</button>
+            <a href="https://github.com/smartman15/sapa-isyarat" target="_blank" class="project-link secondary">View Documentation</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Ventura -->
+      <div class="project-card" style="background-color: #FF5757;">
+        <div class="project-tag" style="background-color: #3C59E4; color: #FFFFFF;">UI/UX & Frontend</div>
+        <div class="project-content">
+          <div>
+            <h3>Ventura</h3>
+            <p>A mobile travel planning application designed to help users organize their trips efficiently with a clean, friendly interface layout.</p>
+            <div class="tech-stack">
+              <span class="tech-pill">Flutter</span>
+              <span class="tech-pill">NestJS</span>
+              <span class="tech-pill">MySQL</span>
+              <span class="tech-pill">Figma</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <button class="project-link open-modal-btn" data-img="ventura.png" style="background-color: #3C59E4;">View Details</button>
+            <a href="https://github.com/irenenatr/VenturaProject" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Documentation</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Genshin Import -->
+      <div class="project-card" style="background-color: #FFB74D;">
+        <div class="project-tag" style="background-color: #FF5757; color: #FFFFFF;">Fullstack & UI/UX</div>
+        <div class="project-content">
+          <div>
+            <h3>Genshin Import E-Commerce</h3>
+            <p>A thematic mobile e-commerce application inspired by Genshin Impact featuring a customer shop and comprehensive admin management system.</p>
+            <div class="tech-stack">
+              <span class="tech-pill">Flutter</span>
+              <span class="tech-pill">Node.js</span>
+              <span class="tech-pill">MySQL</span>
+              <span class="tech-pill">OAuth</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <button class="project-link open-modal-btn" data-img="genshin.png" style="background-color: #FF5757;">View Details</button>
+            <a href="https://github.com/irenenatr/GenshinImport" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Documentation</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Mr. Koffee -->
+      <div class="project-card">
+        <div class="project-tag">Web Developer</div>
+        <div class="project-content">
+          <div>
+            <h3>Mr. Koffee</h3>
+            <p>A responsive multi-page coffee shop website developed for a Human-Computer Interaction course focusing on optimal user experience and interaction.</p>
+            <div class="tech-stack">
+              <span class="tech-pill">HTML5</span>
+              <span class="tech-pill">CSS3</span>
+              <span class="tech-pill">JavaScript</span>
+              <span class="tech-pill">Figma</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <button class="project-link open-modal-btn" data-img="mrkoffee.png">View Details</button>
+            <a href="https://github.com/irenenatr/mrcoffee " target="_blank" class="project-link secondary">View Documentation</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: Arcofest 2022 Website -->
+      <div class="project-card" style="background-color: #FF5757;">
+        <div class="project-tag" style="background-color: #FFDE59; color: #3C59E4;">Web Committee</div>
+        <div class="project-content">
+          <div>
+            <h3>Arcofest 2022 Official Website</h3>
+            <p>The official website built for SMA Don Bosco II's school festival, featuring event schedules, match details, custom merchandise layout, and visitor information.</p>
+            <div class="tech-stack">
+              <span class="tech-pill">HTML</span>
+              <span class="tech-pill">CSS</span>
+              <span class="tech-pill">JavaScript</span>
+            </div>
+          </div>
+          <div class="project-actions">
+            <button class="project-link open-modal-btn" data-img="arco.png" style="background-color: #3C59E4;">View Details</button>
+            <a href="https://arcofest.donbosco.sch.id/" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Website Link</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MODAL POPUP DINAMIS UNTUK MENAMPILKAN GAMBAR PROYEK -->
+  <div class="modal-overlay" id="projectModal">
+    <div class="modal-image-container">
+      <button class="modal-close-btn" id="closeModal">&times;</button>
+      <!-- Gambar yang akan diubah secara dinamis melalui JavaScript -->
+      <img id="modalImage" src="" alt="Project Poster Detail">
+    </div>
+  </div>
+
+  <!-- JavaScript untuk Navigasi Scroll & Modal Proyek Dinamis -->
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navbar.classList.add('visible');
+      } else {
+        navbar.classList.remove('visible');
+      }
+    });
+
+    // Active Link Scroll Handler
+    const sections = document.querySelectorAll('.content-section');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= (sectionTop - 250)) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Logic Modal Dinamis untuk Semua Proyek
+    const modal = document.getElementById('projectModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModalBtn = document.getElementById('closeModal');
+    const openModalBtns = document.querySelectorAll('.open-modal-btn');
+
+    openModalBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const imgSrc = btn.getAttribute('data-img');
+        modalImg.src = imgSrc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Mencegah background scroll di belakang modal
+      });
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Menutup modal jika user klik di luar area gambar
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+
+</body>
+</html>
