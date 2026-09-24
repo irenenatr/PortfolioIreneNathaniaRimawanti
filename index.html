@@ -105,7 +105,7 @@
       background-color: #FF5757;
     }
 
-    /* Section Home / Hero */
+    /* Section Home / Hero (Desktop Default) */
     .hero-section {
       width: 100%;
       min-height: 100vh;
@@ -121,7 +121,7 @@
       max-width: 1740px;
       aspect-ratio: 16 / 9;
       background-color: #3C59E4;
-      border-radius: clamp(24px, 4vw, 60px);
+      border-radius: 60px;
       box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
       display: flex;
       justify-content: center;
@@ -134,9 +134,9 @@
       top: 8%;
       left: 6%;
       background-color: #FF5757;
-      border: clamp(6px, 0.9vw, 12px) solid #FFFFFF;
+      border: 12px solid #FFFFFF;
       border-radius: 9999px;
-      padding: clamp(12px, 2vw, 28px) clamp(20px, 3.5vw, 48px);
+      padding: 28px 48px;
       transform: rotate(-14deg);
       box-shadow: 6px 10px 0px rgba(0, 0, 0, 0.1);
       z-index: 10;
@@ -151,7 +151,7 @@
 
     .name-badge span {
       color: #FFFFFF;
-      font-size: clamp(14px, 2.5vw, 42px);
+      font-size: 42px;
       font-weight: 800;
       line-height: 1.1;
       display: block;
@@ -169,23 +169,23 @@
 
     .portfolio-title {
       color: #EDA63A;
-      font-size: clamp(75px, 17.5vw, 310px);
+      font-size: 310px;
       font-weight: 900;
       line-height: 0.82;
       letter-spacing: 2px;
       text-align: center;
       transform: rotate(-3deg);
-      -webkit-text-stroke: clamp(8px, 1.5vw, 26px) #FFFFFF;
+      -webkit-text-stroke: 26px #FFFFFF;
       paint-order: stroke fill;
       filter: drop-shadow(0px 12px 0px rgba(0, 0, 0, 0.12));
     }
 
     .year-text {
       position: absolute;
-      bottom: -10%;
-      right: 10%;
+      bottom: 2%;
+      right: 12%;
       color: #FFFFFF;
-      font-size: clamp(16px, 3vw, 55px);
+      font-size: 55px;
       font-weight: 800;
       letter-spacing: 1px;
       transform: rotate(-3deg);
@@ -544,7 +544,6 @@
       border-radius: 8px;
     }
 
-    /* Tombol Aksi di Kartu Proyek */
     .project-actions {
       display: flex;
       gap: 10px;
@@ -580,7 +579,7 @@
       background-color: #283cb8;
     }
 
-    /* Styling Modal untuk Menampilkan Gambar Popup */
+    /* Styling Modal */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -647,23 +646,36 @@
       background-color: #D32F2F;
     }
 
-    /* RESPONSIVE CSS KHUSUS MOBILE */
+    /* RESPONSIVE CSS KHUSUS MOBILE (Desktop tetap aman) */
     @media (max-width: 900px) {
-      /* Memperpanjang kotak hero/biru ke bawah di mobile agar proporsional */
       .hero-container {
         aspect-ratio: 4 / 5; 
         max-width: 92vw;
+        border-radius: 36px;
       }
 
-      /* Menggeser badge nama agar naik ke atas dan tidak menimpa huruf PORTFOLIO */
       .name-badge {
-        top: 5%;
+        top: 4%;
         left: 50%;
-        transform: translateX(-50%) rotate(-4deg);
+        transform: translateX(-50%) rotate(-3deg);
+        padding: 10px 24px;
+        border-width: 6px;
       }
 
-      .name-badge:hover {
-        transform: translateX(-50%) rotate(0deg) scale(1.05);
+      .name-badge span {
+        font-size: clamp(13px, 4vw, 20px);
+      }
+
+      .portfolio-title {
+        font-size: clamp(60px, 16vw, 110px);
+        -webkit-text-stroke: clamp(4px, 1.2vw, 10px) #FFFFFF;
+      }
+
+      .year-text {
+        bottom: 8%;
+        right: 50%;
+        transform: translateX(50%) rotate(-3deg);
+        font-size: clamp(14px, 4vw, 22px);
       }
 
       .bio-card {
@@ -1017,7 +1029,7 @@
     </div>
   </section>
 
-  <!-- MODAL POPUP DINAMIS UNTUK MENAMPILKAN GAMBAR PROYEK -->
+  <!-- MODAL POPUP DINAMIS -->
   <div class="modal-overlay" id="projectModal">
     <div class="modal-image-container">
       <button class="modal-close-btn" id="closeModal">&times;</button>
