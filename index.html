@@ -647,17 +647,34 @@
       background-color: #D32F2F;
     }
 
-    /* RESPONSIVE CSS KHUSUS MOBILE UNTUK BAGIAN ABOUT */
+    /* RESPONSIVE CSS KHUSUS MOBILE */
     @media (max-width: 900px) {
+      /* Memperpanjang kotak hero/biru ke bawah di mobile agar proporsional */
+      .hero-container {
+        aspect-ratio: 4 / 5; 
+        max-width: 92vw;
+      }
+
+      /* Menggeser badge nama agar naik ke atas dan tidak menimpa huruf PORTFOLIO */
+      .name-badge {
+        top: 5%;
+        left: 50%;
+        transform: translateX(-50%) rotate(-4deg);
+      }
+
+      .name-badge:hover {
+        transform: translateX(-50%) rotate(0deg) scale(1.05);
+      }
+
       .bio-card {
-        flex-direction: column; /* Mengubah susunan menjadi ke bawah (kolom) pada layar mobile */
+        flex-direction: column;
         align-items: center;
         text-align: center;
         padding: 30px 20px;
       }
 
       .bio-img-box {
-        margin-bottom: 10px; /* Foto berada di bagian paling awal sebelum paragraf teks */
+        margin-bottom: 10px;
       }
 
       .bio-text p {
@@ -692,7 +709,7 @@
   <section class="hero-section" id="home">
     <div class="hero-container">
       <div class="name-badge">
-        <span>Irene<br>Nathania<br>Rimawanti</span>
+        <span>Irene Nathania Rimawanti</span>
       </div>
 
       <div class="title-wrapper">
@@ -705,7 +722,6 @@
   <!-- Section About Me -->
   <section class="content-section" id="about">
     <div class="bio-card">
-      <!-- Foto Profil (di mobile akan otomatis berada di bagian awal/atas) -->
       <div class="bio-img-box">
         <img src="irene porto.png" alt="Irene Porto">
       </div>
@@ -720,7 +736,7 @@
           </p>
         </div>
         <div class="social-links">
-          <a href="www.linkedin.com/in/irene-nathania-rimawanti-326958325/" target="_blank">
+          <a href="https://www.linkedin.com/in/irene-nathania-rimawanti-321558325/" target="_blank">
             <span>in</span> LinkedIn
           </a>
           <a href="mailto:irenenathaniarim@gmail.com">
@@ -729,7 +745,7 @@
           <a href="https://instagram.com/irenenatr" target="_blank">
             <span>ig</span> Instagram
           </a>
-          <a href="https://bit.ly/CVIreneNathaniaRimawanti" target="_blank" class="cv-btn">
+          <a href="https://bit.ly/CV-IreneNathaniaRimawanti" target="_blank" class="cv-btn">
             <span>cv</span> View CV
           </a>
         </div>
@@ -910,7 +926,7 @@
           </div>
           <div class="project-actions">
             <button class="project-link open-modal-btn" data-img="sapaisyarat.png">View Details</button>
-            <a href="https://github.com/smartman15/sapa-isyarat" target="_blank" class="project-link secondary">View Documentation</a>
+            <a href="https://github.com/smartmanis/sapa-isyarat" target="_blank" class="project-link secondary">View Documentation</a>
           </div>
         </div>
       </div>
@@ -930,8 +946,8 @@
             </div>
           </div>
           <div class="project-actions">
-            <button class="project-link open-modal-btn" data-img="ventura.png" style="background-color: #3C59E4;">View Details</button>
-            <a href="https://github.com/irenenatr/VenturaProject" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Documentation</a>
+            <button class="project-link open-modal-btn" data-img="ventua.png" style="background-color: #3C59E4;">View Details</button>
+            <a href="https://github.com/icenet/Venturajs" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Documentation</a>
           </div>
         </div>
       </div>
@@ -952,7 +968,7 @@
           </div>
           <div class="project-actions">
             <button class="project-link open-modal-btn" data-img="genshin.png" style="background-color: #FF5757;">View Details</button>
-            <a href="https://github.com/irenenatr/GenshinImport" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Documentation</a>
+            <a href="https://github.com/irenenatr/genshin-import-e-commerce" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Documentation</a>
           </div>
         </div>
       </div>
@@ -973,7 +989,7 @@
           </div>
           <div class="project-actions">
             <button class="project-link open-modal-btn" data-img="mrkoffee.png">View Details</button>
-            <a href="https://github.com/irenenatr/mrcoffee " target="_blank" class="project-link secondary">View Documentation</a>
+            <a href="https://github.com/irenenatr/mrkoffee" target="_blank" class="project-link secondary">View Documentation</a>
           </div>
         </div>
       </div>
@@ -993,7 +1009,7 @@
           </div>
           <div class="project-actions">
             <button class="project-link open-modal-btn" data-img="arco.png" style="background-color: #3C59E4;">View Details</button>
-            <a href="https://arcofest.donbosco.sch.id/" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Website Link</a>
+            <a href="https://arcofest.donbosco2.sch.id/" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Website Link</a>
           </div>
         </div>
       </div>
@@ -1005,12 +1021,11 @@
   <div class="modal-overlay" id="projectModal">
     <div class="modal-image-container">
       <button class="modal-close-btn" id="closeModal">&times;</button>
-      <!-- Gambar yang akan diubah secara dinamis melalui JavaScript -->
       <img id="modalImage" src="" alt="Project Poster Detail">
     </div>
   </div>
 
-  <!-- JavaScript untuk Navigasi Scroll & Modal Proyek Dinamis -->
+  <!-- JavaScript -->
   <script>
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -1021,7 +1036,6 @@
       }
     });
 
-    // Active Link Scroll Handler
     const sections = document.querySelectorAll('.content-section');
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -1042,7 +1056,6 @@
       });
     });
 
-    // Logic Modal Dinamis untuk Semua Proyek
     const modal = document.getElementById('projectModal');
     const modalImg = document.getElementById('modalImage');
     const closeModalBtn = document.getElementById('closeModal');
@@ -1053,7 +1066,7 @@
         const imgSrc = btn.getAttribute('data-img');
         modalImg.src = imgSrc;
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Mencegah background scroll di belakang modal
+        document.body.style.overflow = 'hidden';
       });
     });
 
@@ -1062,7 +1075,6 @@
       document.body.style.overflow = 'auto';
     });
 
-    // Menutup modal jika user klik di luar area gambar
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.classList.remove('active');
