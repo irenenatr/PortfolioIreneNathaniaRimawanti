@@ -105,7 +105,7 @@
       background-color: #FF5757;
     }
 
-    /* Section Home / Hero (Desktop Default) */
+    /* Section Home / Hero */
     .hero-section {
       width: 100%;
       min-height: 100vh;
@@ -121,7 +121,7 @@
       max-width: 1740px;
       aspect-ratio: 16 / 9;
       background-color: #3C59E4;
-      border-radius: 60px;
+      border-radius: clamp(24px, 4vw, 60px);
       box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
       display: flex;
       justify-content: center;
@@ -134,9 +134,9 @@
       top: 8%;
       left: 6%;
       background-color: #FF5757;
-      border: 12px solid #FFFFFF;
+      border: clamp(6px, 0.9vw, 12px) solid #FFFFFF;
       border-radius: 9999px;
-      padding: 28px 48px;
+      padding: clamp(12px, 2vw, 28px) clamp(20px, 3.5vw, 48px);
       transform: rotate(-14deg);
       box-shadow: 6px 10px 0px rgba(0, 0, 0, 0.1);
       z-index: 10;
@@ -151,7 +151,7 @@
 
     .name-badge span {
       color: #FFFFFF;
-      font-size: 42px;
+      font-size: clamp(14px, 2.5vw, 42px);
       font-weight: 800;
       line-height: 1.1;
       display: block;
@@ -169,23 +169,23 @@
 
     .portfolio-title {
       color: #EDA63A;
-      font-size: 310px;
+      font-size: clamp(75px, 17.5vw, 310px);
       font-weight: 900;
       line-height: 0.82;
       letter-spacing: 2px;
       text-align: center;
       transform: rotate(-3deg);
-      -webkit-text-stroke: 26px #FFFFFF;
+      -webkit-text-stroke: clamp(8px, 1.5vw, 26px) #FFFFFF;
       paint-order: stroke fill;
       filter: drop-shadow(0px 12px 0px rgba(0, 0, 0, 0.12));
     }
 
     .year-text {
       position: absolute;
-      bottom: 2%;
-      right: 12%;
+      bottom: -10%;
+      right: 10%;
       color: #FFFFFF;
-      font-size: 55px;
+      font-size: clamp(16px, 3vw, 55px);
       font-weight: 800;
       letter-spacing: 1px;
       transform: rotate(-3deg);
@@ -544,6 +544,7 @@
       border-radius: 8px;
     }
 
+    /* Tombol Aksi di Kartu Proyek */
     .project-actions {
       display: flex;
       gap: 10px;
@@ -579,7 +580,7 @@
       background-color: #283cb8;
     }
 
-    /* Styling Modal */
+    /* Styling Modal untuk Menampilkan Gambar Popup */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -646,47 +647,17 @@
       background-color: #D32F2F;
     }
 
-    /* RESPONSIVE CSS KHUSUS MOBILE (Desktop tetap aman) */
+    /* RESPONSIVE CSS KHUSUS MOBILE UNTUK BAGIAN ABOUT */
     @media (max-width: 900px) {
-      .hero-container {
-        aspect-ratio: 4 / 5; 
-        max-width: 92vw;
-        border-radius: 36px;
-      }
-
-      .name-badge {
-        top: 4%;
-        left: 50%;
-        transform: translateX(-50%) rotate(-3deg);
-        padding: 10px 24px;
-        border-width: 6px;
-      }
-
-      .name-badge span {
-        font-size: clamp(13px, 4vw, 20px);
-      }
-
-      .portfolio-title {
-        font-size: clamp(60px, 16vw, 110px);
-        -webkit-text-stroke: clamp(4px, 1.2vw, 10px) #FFFFFF;
-      }
-
-      .year-text {
-        bottom: 8%;
-        right: 50%;
-        transform: translateX(50%) rotate(-3deg);
-        font-size: clamp(14px, 4vw, 22px);
-      }
-
       .bio-card {
-        flex-direction: column;
+        flex-direction: column; /* Mengubah susunan menjadi ke bawah (kolom) pada layar mobile */
         align-items: center;
         text-align: center;
         padding: 30px 20px;
       }
 
       .bio-img-box {
-        margin-bottom: 10px;
+        margin-bottom: 10px; /* Foto berada di bagian paling awal sebelum paragraf teks */
       }
 
       .bio-text p {
@@ -721,7 +692,7 @@
   <section class="hero-section" id="home">
     <div class="hero-container">
       <div class="name-badge">
-        <span>Irene Nathania Rimawanti</span>
+        <span>Irene<br>Nathania<br>Rimawanti</span>
       </div>
 
       <div class="title-wrapper">
@@ -734,6 +705,7 @@
   <!-- Section About Me -->
   <section class="content-section" id="about">
     <div class="bio-card">
+      <!-- Foto Profil (di mobile akan otomatis berada di bagian awal/atas) -->
       <div class="bio-img-box">
         <img src="irene porto.png" alt="Irene Porto">
       </div>
@@ -748,7 +720,7 @@
           </p>
         </div>
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/irene-nathania-rimawanti-321558325/" target="_blank">
+          <a href="www.linkedin.com/in/irene-nathania-rimawanti-326958325/" target="_blank">
             <span>in</span> LinkedIn
           </a>
           <a href="mailto:irenenathaniarim@gmail.com">
@@ -757,7 +729,7 @@
           <a href="https://instagram.com/irenenatr" target="_blank">
             <span>ig</span> Instagram
           </a>
-          <a href="https://bit.ly/CV-IreneNathaniaRimawanti" target="_blank" class="cv-btn">
+          <a href="https://bit.ly/CVIreneNathaniaRimawanti" target="_blank" class="cv-btn">
             <span>cv</span> View CV
           </a>
         </div>
@@ -938,7 +910,7 @@
           </div>
           <div class="project-actions">
             <button class="project-link open-modal-btn" data-img="sapaisyarat.png">View Details</button>
-            <a href="https://github.com/smartmanis/sapa-isyarat" target="_blank" class="project-link secondary">View Documentation</a>
+            <a href="https://github.com/smartman15/sapa-isyarat" target="_blank" class="project-link secondary">View Documentation</a>
           </div>
         </div>
       </div>
@@ -958,8 +930,8 @@
             </div>
           </div>
           <div class="project-actions">
-            <button class="project-link open-modal-btn" data-img="ventua.png" style="background-color: #3C59E4;">View Details</button>
-            <a href="https://github.com/icenet/Venturajs" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Documentation</a>
+            <button class="project-link open-modal-btn" data-img="ventura.png" style="background-color: #3C59E4;">View Details</button>
+            <a href="https://github.com/irenenatr/VenturaProject" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Documentation</a>
           </div>
         </div>
       </div>
@@ -980,7 +952,7 @@
           </div>
           <div class="project-actions">
             <button class="project-link open-modal-btn" data-img="genshin.png" style="background-color: #FF5757;">View Details</button>
-            <a href="https://github.com/irenenatr/genshin-import-e-commerce" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Documentation</a>
+            <a href="https://github.com/irenenatr/GenshinImport" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Documentation</a>
           </div>
         </div>
       </div>
@@ -1001,7 +973,7 @@
           </div>
           <div class="project-actions">
             <button class="project-link open-modal-btn" data-img="mrkoffee.png">View Details</button>
-            <a href="https://github.com/irenenatr/mrkoffee" target="_blank" class="project-link secondary">View Documentation</a>
+            <a href="https://github.com/irenenatr/mrcoffee " target="_blank" class="project-link secondary">View Documentation</a>
           </div>
         </div>
       </div>
@@ -1021,7 +993,7 @@
           </div>
           <div class="project-actions">
             <button class="project-link open-modal-btn" data-img="arco.png" style="background-color: #3C59E4;">View Details</button>
-            <a href="https://arcofest.donbosco2.sch.id/" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Website Link</a>
+            <a href="https://arcofest.donbosco.sch.id/" target="_blank" class="project-link secondary" style="background-color: #3C59E4;">View Website Link</a>
           </div>
         </div>
       </div>
@@ -1029,15 +1001,16 @@
     </div>
   </section>
 
-  <!-- MODAL POPUP DINAMIS -->
+  <!-- MODAL POPUP DINAMIS UNTUK MENAMPILKAN GAMBAR PROYEK -->
   <div class="modal-overlay" id="projectModal">
     <div class="modal-image-container">
       <button class="modal-close-btn" id="closeModal">&times;</button>
+      <!-- Gambar yang akan diubah secara dinamis melalui JavaScript -->
       <img id="modalImage" src="" alt="Project Poster Detail">
     </div>
   </div>
 
-  <!-- JavaScript -->
+  <!-- JavaScript untuk Navigasi Scroll & Modal Proyek Dinamis -->
   <script>
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -1048,6 +1021,7 @@
       }
     });
 
+    // Active Link Scroll Handler
     const sections = document.querySelectorAll('.content-section');
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -1068,6 +1042,7 @@
       });
     });
 
+    // Logic Modal Dinamis untuk Semua Proyek
     const modal = document.getElementById('projectModal');
     const modalImg = document.getElementById('modalImage');
     const closeModalBtn = document.getElementById('closeModal');
@@ -1078,7 +1053,7 @@
         const imgSrc = btn.getAttribute('data-img');
         modalImg.src = imgSrc;
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; // Mencegah background scroll di belakang modal
       });
     });
 
@@ -1087,6 +1062,7 @@
       document.body.style.overflow = 'auto';
     });
 
+    // Menutup modal jika user klik di luar area gambar
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.classList.remove('active');
